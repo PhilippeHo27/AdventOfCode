@@ -1,5 +1,5 @@
 #pragma once
-class Day2
+class Utilities
 {
 };
 

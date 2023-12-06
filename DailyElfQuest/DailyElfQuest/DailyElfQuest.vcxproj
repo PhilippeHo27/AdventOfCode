@@ -20,12 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Day1.h" />
-    <ClInclude Include="Source\Day2.h" />
+    <ClInclude Include="Source\Day1PartTwo.h" />
+    <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Day1.cpp" />
-    <ClCompile Include="Source\Day2.cpp" />
+    <ClCompile Include="Source\Day1PartTwo.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

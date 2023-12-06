@@ -1,17 +1,18 @@
 #pragma once
-#include <iostream>
-#include <fstream>
-#include <string>
+ #include <string>
 #include <vector>
-#include <cstring>
 
 using namespace std;
 
 class Day1
 {
 public:
-	vector<string> ExtractWordsFromFile(const string& filename);
-	int SizeOfChar(const char* str);
+	Day1();
 	void SolutionDayOne();
 
+	vector<string> ExtractWordsFromFile(const string& filename);
+	int SizeOfChar(const char* str);
+
+	vector<string> listOfWords;
+	vector<int> storingNumbers;
 };
