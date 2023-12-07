@@ -21,13 +21,20 @@
   <ItemGroup>
     <ClInclude Include="Source\Day1.h" />
     <ClInclude Include="Source\Day1PartTwo.h" />
+    <ClInclude Include="Source\Day7Part1.h" />
     <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Day1.cpp" />
     <ClCompile Include="Source\Day1PartTwo.cpp" />
+    <ClCompile Include="Source\Day7Part1.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Utilities.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.vcxproj">
+      <Project>{07a6a8e7-f328-4779-a7a0-925a198ee5c9}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -115,6 +122,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\ext\range-v3\include;..\ext\scnlib\include;..\ext\boost_1_83_0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
