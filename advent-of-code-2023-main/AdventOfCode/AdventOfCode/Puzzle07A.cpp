@@ -55,7 +55,7 @@ namespace Puzzle07A
 
 			if (modifiedValueA != modifiedValueB)
 			{
-				return modifiedValueA < modifiedValueB; // Invert the comparison
+				return modifiedValueA < modifiedValueB;
 			}
 		}
 		return a.cards.length() > b.cards.length();
@@ -63,7 +63,7 @@ namespace Puzzle07A
 
 	void PrintSolution(const std::filesystem::path& inputFile, bool shouldRender)
 	{
-		std::vector<std::string> lines = ReadAllLinesInFile(inputFile);
+		vector<string> lines = ReadAllLinesInFile(inputFile);
 		vector<Hands> unrankedListOfHands;
 
 		// stored the hands into a list of structs
@@ -88,7 +88,7 @@ namespace Puzzle07A
 		// sort the combos
 		for (auto hand : unrankedListOfHands)
 		{
-			std::unordered_map<char, int> charCount;
+			unordered_map<char, int> charCount;
 			for (char c : hand.cards)
 			{
 				charCount[c]++;
@@ -171,17 +171,18 @@ namespace Puzzle07A
 
 
 		// make a giant vector
-		std::vector<std::vector<Hands>> vectors = { topCard, pair, twoPairs, trips, fullHouse,  quads, quints };
-		std::vector<Hands> merged = std::accumulate(
+		vector<vector<Hands>> vectors = { topCard, pair, twoPairs, trips, fullHouse,  quads, quints };
+		vector<Hands> merged = std::accumulate(
 			vectors.begin(),
 			vectors.end(),
-			std::vector<Hands>(),
-			[](std::vector<Hands> acc, const std::vector<Hands>& vec) -> std::vector<Hands>
+			vector<Hands>(),
+			[](vector<Hands> acc, const vector<Hands>& vec) -> vector<Hands>
 			{
 				acc.insert(acc.end(), vec.begin(), vec.end());
 				return acc;
 			});
 
+		//calculate the total
 		int total = 0;
 		for (size_t i = 0; i < merged.size(); i++)
 		{
