@@ -7,35 +7,39 @@ using namespace Utilities;
 
 namespace Puzzle06A
 {
-	auto ReadInput(const std::filesystem::path& inputFile)
-	{
-		auto input = ReadAllLinesInFile(inputFile);
-		return std::make_pair(ExtractInt32s(input[0]), ExtractInt32s(input[1]));
-	}
-
 	void PrintSolution(const std::filesystem::path& inputFile, bool shouldRender)
 	{
-		auto [times, distanceRecords] = ReadInput(inputFile);
+		auto lines = ReadAllLinesInFile(inputFile);
+		std::istringstream issLineOne(lines[0]);
+		std::istringstream issLineTwo(lines[1]);
+		std::vector<std::pair<std::pair<int, int>,int>> timesAndDistances;
 
-		// Multiply number of wins for each race
-		int acc = 1;
-		for (int i = 0; i < times.size(); ++i)
+		// Temporary values to store them into container
+		int time, distance = 0;
+		while (issLineOne >> time && issLineTwo >> distance)
 		{
-			int time = times[i];
-			int distanceRecord = distanceRecords[i];
-
-			// Solve quadratic equation to find smallest and largest winning hold times:
-			//     heldMs * (time - heldMs) > distanceRecord
-			//
-			float a = -1.0f;
-			float b = static_cast<float>(time);
-			float c = static_cast<float>(-(distanceRecord + 1)); // +1 to beat the distance record
-			float discriminant = std::sqrt(b * b - 4 * a * c);
-			float minX = (b - discriminant) / 2.0f;
-			float maxX = (b + discriminant) / 2.0f;
-			acc *= static_cast<int>(std::floor(maxX)) - static_cast<int>(std::ceil(minX)) + 1;
+			timesAndDistances.emplace_back(std::make_pair(std::make_pair(time, distance), 0));
 		}
 
-		std::cout << acc;
+		for (auto& element : timesAndDistances)
+		{
+			int counter = 0;
+			for (size_t i = 0; i < element.first.first; i++)
+			{
+				int distance = (element.first.first - (int)i) * (int)i;
+				if (distance > element.first.second)
+				{
+					counter++;
+				}
+			}
+			element.second = counter;
+		}
+
+		int total = 1;
+		for (auto& element : timesAndDistances)
+		{
+			total *= element.second;
+		}
+		std::cout << total << std::endl;
 	}
 } // namespace Puzzle06A
